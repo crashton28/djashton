@@ -3201,10 +3201,6 @@ react-dom@^15.5.4:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-router-config@^1.0.0-beta.3:
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-1.0.0-beta.3.tgz#b16d38d6f210960434d929c78cc358f684a6c11e"
-
 react-router-dom@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.1.1.tgz#3021ade1f2c160af97cf94e25594c5f294583025"
@@ -3444,6 +3440,10 @@ ripemd160@^1.0.0:
 safe-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
+
+sanitize.scss@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sanitize.scss/-/sanitize.scss-1.0.0.tgz#8079da442b28500d994c882e8f7d196b6466f95f"
 
 sass-graph@^2.1.1:
   version "2.2.2"

@@ -1,8 +1,9 @@
 import React from 'react';
 import {HashRouter, Route, IndexRoute, Link} from 'react-router-dom';
 import routes from './routes';
+import styleReset from './sanitize.scss';
 import style from './App.scss';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './components/Navigation/';
 
 export default class App extends React.Component {
     render() {
@@ -10,7 +11,6 @@ export default class App extends React.Component {
             <HashRouter>
                 <div>
                     <Navigation />
-                    <hr />
                     {routes.map((route, i) => (
                         <RouteWithSubRoutes key={i} {...route}/>
                     ))}

@@ -1,7 +1,10 @@
 import React from 'react';
+import PageContainer from '../components/PageContainer/';
 
 const Page = () => (
-    <div>Contact</div>
+    <PageContainer>
+        Contact
+    </PageContainer>
 );
 
 export default Page;

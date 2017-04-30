@@ -5,10 +5,10 @@ import styles from './Navigation.scss';
 
 const Navigation = () => {
     return(
-        <nav className='globalNav'>
+        <nav className='nav'>
             {routes.map((route,i)=>{
                 return(
-                    <NavLink to={route.path} activeClassName='is--active' className='globalNav__item'>{route.label}</NavLink>
+                    <NavLink to={route.path} activeClassName='is--active' className='nav__item' key={i}>{route.label}</NavLink>
                 );
             })}
         </nav>
