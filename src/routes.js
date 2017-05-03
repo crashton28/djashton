@@ -1,34 +1,28 @@
 import React from 'react';
 
-import Index from './Pages/Index';
-import About from './Pages/About';
-import Contact from './Pages/Contact';
+import Home from './pages/Home';
+import About from './pages/About';
+import Login from './pages/Login';
+//import Register from './pages/Register';
 
 const routes = [
     {
         path: '/',
-        component: Index,
-        label: 'Home'
+        component: Home,
+        label: 'Home',
+        protected: false
     },
     {
         path: '/about',
         component: About,
-        label: 'About'
+        label: 'About',
+        protected: true
     },
     {
-        path: '/contact',
-        component: Contact,
-        label: 'Contact',
-        routes: [
-            {
-                path: '/section/sub1',
-                component: Contact
-            },
-            {
-                path: '/section/sub2',
-                component: Contact
-            }
-        ]
+        path: '/login',
+        component: Login,
+        label: 'Login',
+        protected: false
     }
 ];
 
