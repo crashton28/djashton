@@ -15,7 +15,7 @@ function PrivateRoute ({component: Component, authed}) {
 
 function PublicRoute ({component: Component, authed}) {
     return (
-        <Route render={(props) => authed === false ? <Component {...props} /> : <Redirect to='/' />}/>
+        <Route render={(props) => <Component {...props} />}/>
     )
 }
 
@@ -46,14 +46,14 @@ export default class App extends Component {
         this.removeListener()
     }
     render() {
-        return this.state.loading === true ? <h1>Loading</h1> : (
+        return this.state.loading ? <h2>Loading</h2> : (
             <HashRouter>
                 <div>
                     <header>
-                        <Link to="/">David Ashton Portfolio</Link>
+                        <Link to="/">David Ashton Portfolio{this.state.authed ? 'true' : 'false'}</Link>
                         <nav className='nav'>
                             {routes.map((route, i) => {
-                                if(route.label !== 'Login' && route.label !== 'Register'){
+                                if(route.label !== 'Login'){
                                     return(
                                         <Link to={route.path} key={i} className='nav__item'>{route.label}</Link>
                                     )
