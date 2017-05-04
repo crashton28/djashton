@@ -8,15 +8,11 @@ import styleReset from './sanitize.scss';
 import style from './App.scss';
 
 function PrivateRoute ({component: Component, authed}) {
-    return (
-        <Route render={(props) => authed === true ? <Component {...props} /> : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}/>
-    )
+    return <Route render={(props) => authed === true ? <Component {...props} /> : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}/>
 }
 
 function PublicRoute ({component: Component, authed}) {
-    return (
-        <Route render={(props) => <Component {...props} />}/>
-    )
+    return <Route render={(props) => <Component {...props} />}/>
 }
 
 export default class App extends Component {
@@ -52,15 +48,11 @@ export default class App extends Component {
                     <header>
                         <Link to="/">David Ashton Portfolio{this.state.authed ? 'true' : 'false'}</Link>
                         <nav className='nav'>
-                            {routes.map((route, i) => {
+                            {routes.map((route, idx) => {
                                 if(route.label !== 'Login'){
-                                    return(
-                                        <Link to={route.path} key={i} className='nav__item'>{route.label}</Link>
-                                    )
+                                    return <Link to={route.path} key={idx} className='nav__item'>{route.label}</Link>
                                 }else if(!this.state.authed){
-                                    return(
-                                        <Link to={route.path} key={i} className='nav__item'>{route.label}</Link>
-                                    )
+                                    return <Link to={route.path} key={idx} className='nav__item'>{route.label}</Link>
                                 }
                             })}
                             { this.state.authed ? <button className='nav__item' style={{border: 'none', background: 'transparent'}} onClick={() => { logout() }} >Logout</button> : null}
@@ -68,19 +60,13 @@ export default class App extends Component {
                     </header>
                     <Switch>
                         {
-                            routes.map((route, i) => {
+                            routes.map((route, idx) => {
                                 if(route.label==='Home'){
-                                    return(
-                                        <Route path='/' exact component={route.component} key={i} />
-                                    )
+                                    return <Route path='/' exact component={route.component} key={idx} />
                                 }else if(route.protected===true){
-                                    return(
-                                        <PrivateRoute authed={this.state.authed} path={route.path} component={route.component} key={i}/>    
-                                    )
+                                    return <PrivateRoute authed={this.state.authed} path={route.path} component={route.component} key={idx}/>    
                                 }else{
-                                    return(
-                                        <PublicRoute authed={this.state.authed} path={route.path} component={route.component} key={i}/>
-                                    )
+                                    return <PublicRoute authed={this.state.authed} path={route.path} component={route.component} key={idx}/>
                                 }
                             })
                         }
