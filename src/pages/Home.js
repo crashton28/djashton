@@ -3,7 +3,7 @@ import PageContainer from '../components/PageContainer/';
 
 const Page = () => (
     <PageContainer>
-        Home Content
+        
     </PageContainer>
 );
 

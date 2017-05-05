@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route, HashRouter, Link, Redirect, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import { logout } from './helpers/auth';
 import { firebaseAuth } from './config/constants';
 
 // Routes and Components
 import Routes from './routes';
+import Logo from './components/Logo/Logo';
 import Login from './components/Login/Login';
 import Home from './pages/Home';
 import Error404 from './pages/404';
@@ -15,7 +16,7 @@ import style from './App.scss';
 
 // Route Types
 function PrivateRoute ({component: Component, authed}) {
-    return <Route render={(props) => authed === true ? <Component {...props} /> : <Redirect to={{pathname: '/'}} />}/>
+    return <Route render={(props) => authed === true ? <Component {...props} /> : <Redirect from={props.path} to="/" />}/>
 }
 function PublicRoute ({component: Component, authed}) {
     return <Route render={(props) => <Component {...props} />}/>
@@ -69,15 +70,16 @@ export default class App extends Component {
         });
 
         return this.state.loading ? <h2>Loading</h2> : (
-            <HashRouter>
-                <div>
+            <BrowserRouter>
+                <div className='Container__Main'>
                     <header>
-                        <Link to="/">David Ashton Portfolio</Link>
-                        <nav className='nav'>
+                        <Logo />
+                        <nav className='Nav'>
                             {nav}
-                            {this.state.authed ? <div className='nav__item' onClick={() => { logout() }} >Logout</div> : null}
+                            {this.state.authed ? <div className='Nav__Item' onClick={() => { logout() }} >Logout</div> : null}
                         </nav>
                     </header>
+                    {this.state.authed ? <div>Welcome: Stay thirsty my friend...</div> : null}
                     <Switch>
                         <Route path='/' exact component={Home} />
                         {routes}
@@ -85,7 +87,7 @@ export default class App extends Component {
                     </Switch>
                     {!this.state.authed ? <Login /> : null}
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         );
     }
 }

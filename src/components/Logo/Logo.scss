@@ -1,0 +1,23 @@
+#logo{
+    color: #333;
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    height: 35px;
+    text-decoration: none;
+    transition: opacity .2s ease-in-out;
+    opacity: 1;
+}
+#logo .logo__tag{
+    color: #ccc;
+}
+#message{
+    color: #ccc;
+    font-size:12px;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: opacity .2s ease-in-out;
+}
+#logo.is--hidden, #message.is--hidden{
+    opacity: 0;
+}
