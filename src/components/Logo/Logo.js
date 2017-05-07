@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
+var classNames = require('classnames');
+
 require('./Logo.scss');
 
 export default class Logo extends Component {
@@ -8,27 +10,33 @@ export default class Logo extends Component {
         super();
         this.state = {
             logoCurrText    : '',
-            className       : '',
-            charPos         : 0
+            logoObject      : <span></span>,
+            charPos         : 0,
+            timer           : setTimeout(setInterval(this.updateText.bind(this),100),2000)
         }
     }
     updateText(){
-        var logoText        = '< david.ashton />',
+        var logoText        = ' david.ashton ',
             logoLength      = logoText.length,
             charPos         = this.state.charPos,
             char            = logoText.charAt(charPos)
         ;
         if(char === '<' || char === '/' || char === '>'){
-            //char = "<span className='logo__tag'>"+char+"</span>";
+            //char = <span className='logo__tag'>{char}</span>;
         }
+        
+
         charPos++;
         this.setState({
             charPos      : charPos,
-            logoCurrText : this.state.logoCurrText + char
+            logoCurrText : this.state.logoCurrText+char,
+            logoObject   : <span>{this.state.logoCurrText}{char}</span>
+
             
         });
-        if(charPos === logoLength){
-            clearInterval(this.timer);
+        //console.log(char, charPos, logoLength);
+        if(charPos >= logoLength){
+            clearInterval(this.state.timer);
             /*
             setTimeout(function(){
                 this.setState({
@@ -47,15 +55,17 @@ export default class Logo extends Component {
         }
     }
     componentDidMount(){
-
-        var timer;
-        this.timer = setInterval(this.updateText.bind(this),100); 
+        
     }
     
     
     render(){
+        var className = classNames('Logo',this.props.className);
         return(
-            <Link to="/" id="logo" className={this.state.className}>{this.state.logoCurrText}</Link>
+            <div className={className}>
+                <Link to="/" id="logo" className="Logo__Text"><span className='Logo__Tag'>{`<`}</span> {this.state.logoObject}<span className='Logo__Tag'> {`/>`}</span></Link>
+                <div className="Logo__Tagline">Designer, Developer</div>
+            </div>
         );
     }
 }

@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "placeholder",  // placeholder or public
+    "public": "public",  // placeholder or public
     "rewrites": [
       {
         "source": "**",

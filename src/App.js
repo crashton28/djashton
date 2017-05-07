@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
-import { logout } from './helpers/auth';
 import { firebaseAuth } from './config/constants';
 
-// Routes and Components
-import Routes from './routes';
-import Logo from './components/Logo/Logo';
+// Components
+import Header from './components/Header/Header';
 import Login from './components/Login/Login';
+import LoadAnim from './components/LoadAnim/LoadAnim';
+import HomeAuthed from './pages/HomeAuthed';
+
+// Routes
+import Routes from './routes';
 import Home from './pages/Home';
 import Error404 from './pages/404';
 
@@ -53,39 +56,41 @@ export default class App extends Component {
         this.authListener();
     }
     render() {
-        var nav, routes;
+        var nav, 
+            routes, 
+            authed = this.state.authed
+        ;
         
         nav = Routes && Routes.map((route,idx)=>{
-            if(!route.protected || route.protected && this.state.authed){
+            if(!route.protected || route.protected && authed){
                 return <Link to={route.path} key={idx} className='nav__item'>{route.label}</Link>;
             }
         });
 
         routes = Routes && Routes.map((route,idx)=>{
             if(route.protected===true){
-                return <PrivateRoute authed={this.state.authed} path={route.path} component={route.component} key={idx}/>    
+                return <PrivateRoute authed={authed} path={route.path} component={route.component} key={idx}/>    
             }else{
-                return <PublicRoute authed={this.state.authed} path={route.path} component={route.component} key={idx}/>
+                return <PublicRoute authed={authed} path={route.path} component={route.component} key={idx}/>
             }
         });
 
-        return this.state.loading ? <h2>Loading</h2> : (
+        return this.state.loading ? <LoadAnim /> : (
             <BrowserRouter>
                 <div className='Container__Main'>
-                    <header>
-                        <Logo />
-                        <nav className='Nav'>
-                            {nav}
-                            {this.state.authed ? <div className='Nav__Item' onClick={() => { logout() }} >Logout</div> : null}
-                        </nav>
-                    </header>
-                    {this.state.authed ? <div>Welcome: Stay thirsty my friend...</div> : null}
+                    <Header className={authed ? 'is--collapsed' : null} authed={authed}/>
+                    <Login className={authed ? 'is--hidden' : null}/>
+                    {authed ? <HomeAuthed /> : null}
+
+                    <nav className='Nav'>
+                        {nav}
+                    </nav>
+                    
                     <Switch>
                         <Route path='/' exact component={Home} />
                         {routes}
                         <Route render={Error404} />
                     </Switch>
-                    {!this.state.authed ? <Login /> : null}
                 </div>
             </BrowserRouter>
         );

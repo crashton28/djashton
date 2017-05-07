@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "classnames": "^2.2.5",
         "css-loader": "^0.28.0",
         "extract-text-webpack-plugin": "^2.1.0",
         "firebase": "^3.9.0",
@@ -19,7 +20,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/crashton28/djashton.git",
-    "author": "David Ashton <david.ashton@espn.com>",
+    "author": "David Ashton <crashton28@gmail.com>",
     "license": "MIT",
     "scripts": {
         "start": "webpack-dev-server",

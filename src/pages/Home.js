@@ -1,10 +1,8 @@
 import React from 'react';
-import PageContainer from '../components/PageContainer/';
+import {PageContainer} from '../components/PageContainer/PageContainer';
 
 const Page = () => (
-    <PageContainer>
-        
-    </PageContainer>
+    <PageContainer></PageContainer>
 );
 
 export default Page;

@@ -1,3 +1,14 @@
-.page{
+.Page__Container{
     padding: 20px;
+    &:empty{
+        display: none;
+    }
+}
+.Content__Container{
+    font-weight: 300;
+    text-align: justify;
+    h1{
+        font-weight: 300;
+    }
+    max-width: 400px;
 }

@@ -1,0 +1,27 @@
+@import '../../vars';
+
+.Header{
+    align-items: center;
+    background: #fff;
+    display: flex;
+    height: calc(100vh - 82px);
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: height .5s ease-in-out, background .2s ease-in-out .3s;
+    z-index: 2;
+    &.is--collapsed{
+        background: $bg-overlay;
+        height: 60px;
+    }
+}
+.Logout{
+    background: none;
+    font-size: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+}

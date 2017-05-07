@@ -1,0 +1,75 @@
+.LoadAnim{
+    height: 20px;
+    margin-top: 20px;
+    position: relative;
+    width: 20px;
+    animation: spin 1s infinite;
+    div{
+        background: #999;
+        border-radius: 4px;
+        height: 4px;
+        position: absolute;
+        width: 4px;
+        
+        &:nth-child(1){
+            left: 50%;
+            top: 50%;
+            margin-left: -2px;
+            margin-top: -2px;
+            animation: ball1 1s infinite;
+        }
+        &:nth-child(2){
+            right: 50%;
+            top: 50%;
+            margin-right: -2px;
+            margin-top: -2px;
+            animation: ball2 1s infinite;
+        }
+        &:nth-child(3){
+            bottom: 50%;
+            right: 50%;
+            margin-bottom: -2px;
+            margin-right: -2px;
+            animation: ball3 1s infinite;
+        }
+        &:nth-child(4){
+            bottom: 50%;
+            left: 50%;
+            margin-bottom: -2px;
+            margin-left: -2px;
+            animation: ball4 1s infinite;
+        }
+    }
+}
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(540deg);
+    }
+}
+@keyframes ball1{
+    50%{
+        left: 0;
+        top: 0;
+    }
+}
+@keyframes ball2{
+    50%{
+        right: 0;
+        top: 0;
+    }
+}
+@keyframes ball3{
+    50%{
+        bottom: 0;
+        right: 0;
+    }
+}
+@keyframes ball4{
+    50%{
+        bottom: 0;
+        left: 0;
+    }
+}

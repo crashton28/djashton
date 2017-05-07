@@ -1,25 +1,78 @@
+@import '../../vars';
+
 .Login{
-    font-size: 12px;
-    padding: 20px;
-    text-align: center;
+    &__Wrapper{
+        animation: pushup 1s 1;
+        animation-delay: 2s;
+        animation-fill-mode: forwards;
+        background: $bg-overlay;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        position: fixed;
+        right: 0;
+        text-align: center;
+        transform: translateY(100px);
+        transition: all .3s ease-in-out;
+        z-index: 3;
+        &.is--hidden{
+            bottom: -100px;
+        }
+    }
+    &__Form{
+        align-items: center;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+    }
+    &__Group{
+        margin: 4px;
+    }
     &__Label{
         display: none;
     }
     &__Input{
         border: 0;
-        border-bottom: 1px rgba(0,0,0,.2) solid;
-        margin-right: 10px;
+        border-bottom: 1px rgba(0,0,0,.1) solid;
+        border-radius: 0;
+        padding: 4px 0;
+        width: 100%;
+        &:focus{
+            border-bottom-color: rgba(0,0,0,.5);
+        }
     }
     &__Submit{
         background: rgba(0,0,0,.05);
         border: 0;
         border-radius: 2px;
         cursor: pointer;
+        display: inline-block;
+        margin: 4px;
+        padding: 4px 10px;
         &:hover{
             background: rgba(0,0,0,.1);
         }
+        &:active{
+            background: rgba(0,0,0,.5);
+            color: #fff;
+        }
     }
     &__ErrorMsg{
+        color: #666;
+        font-size: 12px;
+        height: 0;
         margin-top: 10px;
+        opacity: 0;
+        overflow: hidden;
+        transition: height .2s ease-out, opacity .2s ease-in .2s;
+        &.is--active{
+            height: 15px;
+            opacity: 1;
+        }
+    }
+}
+@keyframes pushup{
+    100%{
+        transform: translateY(0);
     }
 }
