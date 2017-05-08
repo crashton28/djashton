@@ -11,10 +11,10 @@ export default class Logo extends Component {
         this.state = {
             logoCurrText    : '',
             logoObject      : <span></span>,
-            charPos         : 0,
-            timer           : setTimeout(setInterval(this.updateText.bind(this),100),2000)
+            charPos         : 0
         }
     }
+    
     updateText(){
         var logoText        = ' david.ashton ',
             logoLength      = logoText.length,
@@ -55,7 +55,7 @@ export default class Logo extends Component {
         }
     }
     componentDidMount(){
-        
+        this.setState({timer: setTimeout(setInterval(this.updateText.bind(this),100),2000)});
     }
     
     
