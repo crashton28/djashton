@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import { firebaseAuth } from './config/constants';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 // Components
 import Header from './components/Header/Header';
@@ -75,13 +76,21 @@ export default class App extends Component {
             }
         });
 
-        return this.state.loading ? <LoadAnim /> : (
+        {/*return this.state.loading ? <LoadAnim /> : (*/}
+        return(
             <BrowserRouter>
                 <div className='Container__Main'>
                     <Header className={authed ? 'is--collapsed' : null} authed={authed}/>
                     <Login className={authed ? 'is--hidden' : null}/>
-                    {authed ? <HomeAuthed /> : null}
-
+                    <CSSTransitionGroup
+                        transitionName="HomeTransition"
+                        transitionAppear={true}
+                        transitionAppearTimeout={500}
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}
+                    >
+                    {authed ? <HomeAuthed key='1'/> : null}
+                    </CSSTransitionGroup>
                     <nav className='Nav'>
                         {nav}
                     </nav>
