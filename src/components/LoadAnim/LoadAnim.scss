@@ -1,9 +1,11 @@
 .LoadAnim{
-    height: 20px;
-    margin-top: 20px;
-    position: relative;
-    width: 20px;
     animation: spin 1s infinite;
+    height: 20px;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    position: absolute;
+    top: 50%;
+    width: 20px;
     div{
         background: #999;
         border-radius: 4px;

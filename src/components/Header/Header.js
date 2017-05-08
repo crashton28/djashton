@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { logout } from '../../helpers/auth';
+import { logout } from 'Helpers/auth';
 
 var classNames = require('classnames');
 

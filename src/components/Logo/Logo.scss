@@ -14,9 +14,20 @@
         transition: all .5s ease-in-out;
         .is--collapsed &{
             font-size: 20px;
-            margin-bottom: 4px;
+            margin-bottom: 0px;
         }
     }
+    /*
+    &__Text:before{
+        animation: logotext 1.4s 1;
+        animation-delay: .2s;
+        animation-fill-mode: forwards;
+        color: #555;
+        content:'';
+        display: inline-block;
+        margin: 0 8px;
+    }
+    */
     &__Tag{
         color: #ccc;
         font-weight: 200;
@@ -37,6 +48,23 @@
         }
     }
 }
+/*
+@keyframes logotext{
+    0%{ content: 'd' }
+    8%{ content: 'da' }
+    16%{ content: 'dav' }
+    24%{ content: 'davi' }
+    32%{ content: 'david' }
+    40%{ content: 'david.' }
+    48%{ content: 'david.a' }
+    56%{ content: 'david.as' }
+    64%{ content: 'david.ash' }
+    72%{ content: 'david.asht' }
+    80%{ content: 'david.ashto' }
+    88%{ content: 'david.ashton' }
+    100%{ content: 'david.ashton' }
+}
+*/
 @keyframes logo{
     100%{
         opacity: 1;

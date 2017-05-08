@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageContainer} from '../components/PageContainer/PageContainer';
+import {PageContainer} from 'Components/PageContainer/PageContainer';
 
 const Page = () => (
     <PageContainer>

@@ -8,6 +8,13 @@ module.exports = {
 		path: path.resolve(__dirname, "public"),
 		filename: 'bundle.js',
 	},
+    resolve: {
+        alias: {
+            Components: path.resolve(__dirname, "src/components"),
+            Config: path.resolve(__dirname, "src/config"),
+            Helpers: path.resolve(__dirname, "src/helpers"),
+        },
+    },
 	module: {
 		loaders: [{
 				test: /\.js$/,
@@ -47,5 +54,10 @@ module.exports = {
             template: path.join(__dirname, './src/index.html'),
             filename: 'index.html'
         })
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, "public"),
+        compress: true,
+        port: 8080
+    }
 }
