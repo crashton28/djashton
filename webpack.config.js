@@ -34,11 +34,11 @@ module.exports = {
                         options: {}
                     },
                     {
-                        loader: 'css-loader',
+                        loader: 'postcss-loader',
                         options: {
-                            modules: false,
-                            minimize: true,
-                            importLoaders: 1
+                            plugins:[
+                                require('autoprefixer')
+                            ]
                         }
                     },
                     {

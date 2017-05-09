@@ -16,7 +16,7 @@ export default class Header extends Component {
         var className = classNames('Header',this.props.className);
         return(
             <header className={className}>
-                <Logo className={className}/>
+                <Logo/>
                 {this.props.authed ? <div className='Logout' onClick={() => { logout() }} >Logout</div> : null}
             </header>
         );
