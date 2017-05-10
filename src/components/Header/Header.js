@@ -13,11 +13,14 @@ export default class Header extends Component {
         super();
     }
     render(){
-        var className = classNames('Header',this.props.className);
+        var className = classNames('Header',this.props.className),
+            authed = this.props.authed
+        ;
         return(
             <header className={className}>
                 <Logo/>
-                {this.props.authed ? <div className='Logout' onClick={() => { logout() }} >Logout</div> : null}
+                {authed && <Link to="/work" className="Button__Nav">Work</Link>}
+                {authed && <div className='Logout' onClick={() => { logout() }} >Logout</div>}
             </header>
         );
     }

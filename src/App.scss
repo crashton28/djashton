@@ -11,6 +11,7 @@ body{
     color: #555;
     line-height: 1.4;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
 }
@@ -21,27 +22,11 @@ img{
     display: inline-block;
     width: 100%;
 }
-.Nav{
-    display: none;
-    margin-top: 20px;
-    &:empty{display: none;}
-    &__Item{
-        color: #999;
-        cursor: pointer;
-        display: inline-block;
-        padding: 10px;
-        text-decoration: none;
-        &.is--active{
-            color: red;
-        }
-    }
-}
 .Container__Main{
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 60px;
 }
 
 .HomeTransition-appear {

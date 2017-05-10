@@ -61,12 +61,14 @@ export default class App extends Component {
             routes, 
             authed = this.state.authed
         ;
-        
+
+        {/*
         nav = Routes && Routes.map((route,idx)=>{
             if(!route.protected || route.protected && authed){
                 return <Link to={route.path} key={idx} className='nav__item'>{route.label}</Link>;
             }
         });
+        */}
 
         routes = Routes && Routes.map((route,idx)=>{
             if(route.protected===true){
@@ -80,8 +82,9 @@ export default class App extends Component {
         return(
             <BrowserRouter>
                 <div className='Container__Main'>
-                    <Header className={authed ? 'is--collapsed' : null} authed={authed}/>
-                    <Login className={authed ? 'is--hidden' : null}/>
+                    <Header className={authed && 'is--collapsed'} authed={authed}/>
+                    <Login className={authed && 'is--hidden'}/>
+                    {/*
                     <CSSTransitionGroup
                         transitionName="HomeTransition"
                         transitionAppear={true}
@@ -91,15 +94,20 @@ export default class App extends Component {
                     >
                     {authed ? <HomeAuthed key='1'/> : null}
                     </CSSTransitionGroup>
-                    <nav className='Nav'>
-                        {nav}
-                    </nav>
-                    
+                    */}
+                    <CSSTransitionGroup
+                        transitionName="HomeTransition"
+                        transitionAppear={true}
+                        transitionAppearTimeout={500}
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}
+                    >
                     <Switch>
-                        <Route path='/' exact component={Home} />
+                        {authed ? <Route path='/' exact component={HomeAuthed} key="100"/> : <Route path='/' exact component={Home} key="100"/>}
                         {routes}
-                        <Route render={Error404} />
+                        <Route component={Error404} key="102" />
                     </Switch>
+                    </CSSTransitionGroup>
                 </div>
             </BrowserRouter>
         );

@@ -6,22 +6,61 @@
     display: flex;
     height: calc(100vh - 82px);
     justify-content: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+    position: relative;
     transition: height .5s ease-in-out, background .2s ease-in-out .3s;
+    width: 100%;
     z-index: 2;
     &.is--collapsed{
-        background: $bg-overlay;
         height: 60px;
     }
 }
-.Logout{
-    background: none;
+.Button__Nav, .Logout{
+    animation: buttonAnim .5s 1;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
     font-size: 10px;
+    padding: 4px 10px;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    top: 18px;
+    transform: translateY(-100px);
+    transition: all .2s ease-in-out;
     z-index: 2;
+}
+.Button__Nav{
+    background: #fff;
+    border: 1px #4990E2 solid;
+    color: #4990E2;
+    left: 20px;
+    text-decoration: none;
+    &:hover{
+        background: #4990E2;
+        color: #fff;
+    }
+    &:active{
+        background: #4990E2;
+    }
+}
+.Logout{
+    background: #fff;
+    border: 1px #ddd solid;
+    color: #ddd;
+    right: 20px;
+    &:hover{
+        background: #999;
+        border-color: #999;
+        color: #fff;
+    }
+    &:active{
+        background: #999;
+        border-color: #999;
+        color: #fff;
+    }
+}
+@keyframes buttonAnim{
+    100%{
+        transform: translateY(0);
+    }
 }
