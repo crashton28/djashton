@@ -12,6 +12,7 @@ import HomeAuthed from './pages/HomeAuthed';
 // Routes
 import Routes from './routes';
 import Home from './pages/Home';
+import Work from './pages/Work';
 import Error404 from './pages/404';
 
 // Styles
@@ -84,30 +85,16 @@ export default class App extends Component {
                 <div className='Container__Main'>
                     <Header className={authed && 'is--collapsed'} authed={authed}/>
                     <Login className={authed && 'is--hidden'}/>
-                    {/*
-                    <CSSTransitionGroup
-                        transitionName="HomeTransition"
-                        transitionAppear={true}
-                        transitionAppearTimeout={500}
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}
-                    >
-                    {authed ? <HomeAuthed key='1'/> : null}
-                    </CSSTransitionGroup>
-                    */}
-                    <CSSTransitionGroup
-                        transitionName="HomeTransition"
-                        transitionAppear={true}
-                        transitionAppearTimeout={500}
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}
-                    >
-                    <Switch>
-                        {authed ? <Route path='/' exact component={HomeAuthed} key="100"/> : <Route path='/' exact component={Home} key="100"/>}
-                        {routes}
-                        <Route component={Error404} key="102" />
-                    </Switch>
-                    </CSSTransitionGroup>
+                    <Route render={({ location }) => (
+                        <CSSTransitionGroup transitionName="PageTransition">
+                            <Switch key={location.key} location={location}>
+                                {authed ? <Route path='/' exact component={HomeAuthed}/> : <Route path='/' exact component={Home}/>}
+                                {authed ? <Route path='/work' exact component={Work}/> : <Redirect from="/work" to="/" />}
+                                {/*routes*/}
+                                <Route component={Error404} />
+                            </Switch>
+                        </CSSTransitionGroup>
+                    )}/>
                 </div>
             </BrowserRouter>
         );

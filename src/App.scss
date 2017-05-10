@@ -29,24 +29,36 @@ img{
     justify-content: center;
 }
 
-.HomeTransition-appear {
+.PageTransition-appear {
     opacity: 0.01;
     &.HomeTransition-appear-active {
         opacity: 1;
         transition: opacity .5s ease-in;
     }
 }
-.HomeTransition-enter {
-    opacity: 0.01;
-    &.HomeTransition-enter-active {
+.PageTransition-enter {
+    animation: pageEnter .5s 1;
+    animation-fill-mode: forwards;
+}
+.PageTransition-leave {
+    animation: pageLeave 0s 1;
+    animation-fill-mode: forwards;
+}
+@keyframes pageEnter{
+    0%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
         opacity: 1;
-        transition: opacity 500ms ease-in;
     }
 }
-.HomeTransition-leave {
-    opacity: 1;
-    &.HomeTransition-leave-active {
-        opacity: 0.01;
-        transition: opacity 300ms ease-in;
+@keyframes pageLeave{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
     }
 }

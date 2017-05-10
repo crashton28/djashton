@@ -3,7 +3,7 @@ import {PageContainer} from 'Components/PageContainer/PageContainer';
 
 const Page = () => (
     <PageContainer>
-        Work Content
+        <div style={{width:'100%',textAlign:'center'}}>Work Content</div>
     </PageContainer>
 );
 

@@ -62,10 +62,10 @@ export default class Logo extends Component {
     render(){
         var className = classNames('Logo',this.props.className);
         return(
-            <div className={className}>
-                <Link to="/" id="logo" className="Logo__Text"><span className='Logo__Tag'>{`<`}</span> {this.state.logoObject}<span className='Logo__Tag'> {`/>`}</span></Link>
-                <div className="Logo__Tagline">Designer, Developer</div>
-            </div>
+                <Link to="/" id="logo" className={className}>
+                    <div className="Logo__Text"><span className='Logo__Tag'>{`<`}</span> {this.state.logoObject}<span className='Logo__Tag'> {`/>`}</span></div>
+                    <div className="Logo__Tagline">Designer, Developer</div>
+                </Link>
         );
     }
 }
