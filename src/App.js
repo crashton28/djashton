@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
 import { firebaseAuth } from './config/constants';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
@@ -7,11 +7,10 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import LoadAnim from './components/LoadAnim/LoadAnim';
-import HomeAuthed from './pages/HomeAuthed';
 
 // Routes
-import Routes from './routes';
 import Home from './pages/Home';
+import HomeAuthed from './pages/HomeAuthed';
 import Work from './pages/Work';
 import Error404 from './pages/404';
 
@@ -51,52 +50,33 @@ export default class App extends Component {
             }
         })
     }
-    componentDidMount () {
-        this.authListener();
-    }
-    componentWillUnmount(){
+    componentWillMount () {        
         this.authListener();
     }
     render() {
-        var nav, 
-            routes, 
-            authed = this.state.authed
-        ;
-
-        {/*
-        nav = Routes && Routes.map((route,idx)=>{
-            if(!route.protected || route.protected && authed){
-                return <Link to={route.path} key={idx} className='nav__item'>{route.label}</Link>;
-            }
-        });
-        */}
-
-        routes = Routes && Routes.map((route,idx)=>{
-            if(route.protected===true){
-                return <PrivateRoute authed={authed} path={route.path} component={route.component} key={idx}/>    
-            }else{
-                return <PublicRoute authed={authed} path={route.path} component={route.component} key={idx}/>
-            }
-        });
-
-        {/*return this.state.loading ? <LoadAnim /> : (*/}
-        return(
-            <BrowserRouter>
+        var authed = this.state.authed;
+    
+        return this.state.loading ? <LoadAnim /> : (
+            <Router>
                 <div className='Container__Main'>
                     <Header className={authed && 'is--collapsed'} authed={authed}/>
                     <Login className={authed && 'is--hidden'}/>
                     <Route render={({ location }) => (
-                        <CSSTransitionGroup transitionName="PageTransition">
+                        <CSSTransitionGroup 
+                            transitionName="PageTransition"
+                            transitionEnterTimeout={0}
+                            transitionLeave={false}
+                            transitionLeaveTimeout={0}
+                        >
                             <Switch key={location.key} location={location}>
-                                {authed ? <Route path='/' exact component={HomeAuthed}/> : <Route path='/' exact component={Home}/>}
-                                {authed ? <Route path='/work' exact component={Work}/> : <Redirect from="/work" to="/" />}
-                                {/*routes*/}
+                                {authed ? <Route exact path='/' component={HomeAuthed} location={location}/> : <Route exact path='/' component={Home} location={location}/>}
+                                <PrivateRoute authed={authed} path='/work' component={Work}/>
                                 <Route component={Error404} />
                             </Switch>
                         </CSSTransitionGroup>
                     )}/>
                 </div>
-            </BrowserRouter>
+            </Router>
         );
     }
 }

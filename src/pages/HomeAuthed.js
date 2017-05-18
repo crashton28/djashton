@@ -1,7 +1,7 @@
 import React from 'react';
 import {PageContainer, ContentContainer, Hero} from 'Components/PageContainer/PageContainer';
 
-const Page = () => (
+const Page = (props) => (
     <PageContainer>
         <Hero name="profile" type="jpg" />
         <ContentContainer>

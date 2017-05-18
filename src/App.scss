@@ -29,13 +29,6 @@ img{
     justify-content: center;
 }
 
-.PageTransition-appear {
-    opacity: 0.01;
-    &.HomeTransition-appear-active {
-        opacity: 1;
-        transition: opacity .5s ease-in;
-    }
-}
 .PageTransition-enter {
     animation: pageEnter .5s 1;
     animation-fill-mode: forwards;
