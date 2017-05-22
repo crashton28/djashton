@@ -1,0 +1,66 @@
+@import '../../vars';
+
+.CareerTimeline{
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    min-width: 400px;
+    &__Item{
+        overflow: hidden;
+        position: relative;
+        + .CareerTimeline__Item{
+            padding-top: 10px;
+            &:before{
+                background: #ccc;
+                bottom: 0;
+                content:'';
+                left: 56px;
+                position: absolute;
+                top: 0;
+                width: 1px;
+                z-index: -1;
+            }
+        }
+    }
+    &__Details{
+        overflow: hidden;
+        padding-top: 2px;
+    }
+    &__Month{
+        align-items: center;
+        color: #ccc;
+        display: flex;
+        float: left;
+        font-size: 10px;
+        height: 40px;
+        justify-content: flex-end;
+        margin-right: 10px;
+        text-transform: uppercase;
+        width: 26px;
+    }
+    &__Year{
+        align-items: center;
+        background: #fff;
+        border: 1px #ccc solid;
+        border-radius: 40px;
+        color: $clr-blue;
+        display: flex;
+        float: left;
+        font-size: 11px;
+        height: 40px;
+        justify-content: center;
+        line-height: 10px;
+        margin-right: 10px;
+        width: 40px;
+        z-index: 1;
+    }
+    &__Company, &__Position{
+        font-weight: 300;
+        margin: 0;
+    }
+    &__Company{
+        font-size: 14px;
+    }
+    &__Position{
+        font-size: 12px;
+    }
+}
