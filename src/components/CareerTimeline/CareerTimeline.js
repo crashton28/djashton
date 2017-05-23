@@ -89,10 +89,12 @@ export default class CareerTimeline extends Component {
         timelineItems = careerArray.map((item,idx)=>{
             return(
                 <section className="CareerTimeline__Item" key={idx}>
-                    <div className="CareerTimeline__Month">{item.monthStart}</div>
-                    <div className="CareerTimeline__Year">{item.yearStart}</div>
+                    <div className="CareerTimeline__Date">
+                        <span>{item.monthStart}</span>
+                        {item.yearStart}
+                    </div>
                     <div className="CareerTimeline__Details">
-                        <h1 className="CareerTimeline__Company">{item.company}</h1>
+                        <h1 className="h3 CareerTimeline__Company">{item.company}</h1>
                         <h2 className="CareerTimeline__Position">{item.position}</h2>
                     </div>
                 </section>

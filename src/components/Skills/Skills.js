@@ -8,8 +8,10 @@ var classNames = require('classnames'),
                 'CSS',
                 'HTML',
                 'JavaScript',
+                'JQuery',
                 'React',
-                'SASS'
+                'SASS',
+                'Snap.svg'
             ]
         },
         {
@@ -38,13 +40,13 @@ export default class Skills extends Component {
         skills = skillsArray.map((item,idx)=>{
             var skillsList = item.skills.map((skill,idx)=>{
                 return(
-                    <div key={idx}>
+                    <div className="Skill" key={idx}>
                         {skill}
                     </div>
                 )
             });
             return(
-                <section key={idx}>
+                <section className="Skills__Category" key={idx}>
                     <h1 className="h3">{item.label}</h1>
                     {skillsList}
                 </section>
