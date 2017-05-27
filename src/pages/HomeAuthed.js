@@ -1,5 +1,6 @@
 import React from 'react';
-import {PageContainer, ContentContainer, Hero} from 'Components/PageContainer/PageContainer';
+import {PageContainer, ContentContainer} from 'Components/PageContainer/PageContainer';
+import Hero from 'Components/Hero/Hero';
 import CareerTimeline from 'Components/CareerTimeline/CareerTimeline';
 import Skills from 'Components/Skills/Skills';
 

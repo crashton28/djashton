@@ -1,3 +1,4 @@
+// Base Styles
 *{
     box-sizing: border-box;
 }
@@ -19,12 +20,8 @@ img{
     display: inline-block;
     width: 100%;
 }
-.Container__Main{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
+// Heading Styles
 .h1, .h2, .h3{
     font-weight: 300;
     margin: 0 0 8px 0;
@@ -40,11 +37,20 @@ img{
     text-transform: uppercase;
 }
 
+
+.Container__Main{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .Layout__A{
     display: flex;
     flex-wrap: wrap;
 }
 
+// Page Transitions
 .PageTransition-enter {
     animation: pageEnter .5s 1;
     animation-fill-mode: forwards;

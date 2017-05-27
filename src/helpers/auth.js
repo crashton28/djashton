@@ -17,7 +17,6 @@ export function resetPassword (email) {
     return firebaseAuth().sendPasswordResetEmail(email)
 }
 
-
 export function saveUser (user) {
     return ref.child(`users/${user.uid}/info`)
     .set({

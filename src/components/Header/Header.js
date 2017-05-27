@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from 'Helpers/auth';
+import Logo from '../Logo/Logo';
 
 var classNames = require('classnames');
-
-import Logo from '../Logo/Logo';
 
 require('./Header.scss');
 
